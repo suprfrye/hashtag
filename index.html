@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>#Aaron <3 Scott</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <ul>
+      <li v-for="hashtag in hashtags">
+        {{ hashtag.title }}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Aaron <3 Scott Wedding Hashtag',
+        hashtags: [{ title: 'AaronPlusScottEqualsILoveYou', count: 1 }]
+      }
+    })
+  </script>
+</body>
+</html>
