@@ -7,6 +7,7 @@
 <body>
   <div id="app">
     <h1>{{ message }}</h1>
+    <button v-on:click="addHashtag">VOTE</button>
     <ul>
       <li v-for="hashtag in hashtags">
         {{ hashtag.title }}
@@ -20,6 +21,11 @@
       data: {
         message: 'Aaron <3 Scott Wedding Hashtag',
         hashtags: [{ title: 'AaronPlusScottEqualsILoveYou', count: 1 }]
+      },
+      methods: {
+        addHashtag: function() {
+          this.hashtags.push({ title: 'NewHashtagAdded', count: 1 })
+        }
       }
     })
   </script>
