@@ -13,6 +13,11 @@
         {{ hashtag.title }}
       </li>
     </ul>
+    <div v-for="hashtag in hashtags">
+      <input type="radio" id="hashtag.title" name="picked" :value="hashtag.title" v-model="picked">
+      <label for="hashtag.title">{{ hashtag.title }}</label>
+    </div>
+    <span>You voted for #{{ picked }}</span>
   </div>
 
   <script>
@@ -20,7 +25,12 @@
       el: '#app',
       data: {
         message: 'Aaron <3 Scott Wedding Hashtag',
-        hashtags: [{ title: 'AaronPlusScottEqualsILoveYou', count: 1 }]
+        hashtags: [
+          { title: 'AaronPlusScottEqualsILoveYou', count: 7 },
+          { title: 'LoveWinsAgainScottAndAaron2021', count: 5 },
+          { title: 'BlackOnBlackLove', count: 3 }
+        ],
+        picked: ''
       },
       methods: {
         addHashtag: function() {
