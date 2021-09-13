@@ -1,43 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>#Aaron <3 Scott</title>
-  <script src="https://unpkg.com/vue"></script>
-</head>
-<body>
-  <div id="app">
-    <h1>{{ message }}</h1>
-    <button v-on:click="addHashtag">VOTE</button>
-    <ul>
-      <li v-for="hashtag in hashtags">
-        {{ hashtag.title }}
-      </li>
-    </ul>
-    <div v-for="hashtag in hashtags">
-      <input type="radio" id="hashtag.title" name="picked" :value="hashtag.title" v-model="picked">
-      <label for="hashtag.title">{{ hashtag.title }}</label>
-    </div>
-    <span>You voted for #{{ picked }}</span>
-  </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue"></script>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Aaron <3 Scott Wedding Hashtag',
-        hashtags: [
-          { title: 'AaronPlusScottEqualsILoveYou', count: 7 },
-          { title: 'LoveWinsAgainScottAndAaron2021', count: 5 },
-          { title: 'BlackOnBlackLove', count: 3 }
-        ],
-        picked: ''
-      },
-      methods: {
-        addHashtag: function() {
-          this.hashtags.push({ title: 'NewHashtagAdded', count: 1 })
+    <title>#Aaron <3 Scott</title>
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h1>{{ message }}</h1>
+
+      <div class="row">
+        <div class="col">
+          <ul class="list-group">
+            <li class="list-group-item" v-for="hashtag in hashtags">
+              {{ hashtag.title }} {{ hashtag.count }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <form>
+            <div v-for="hashtag in hashtags">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="hashtag.title" name="picked" :value="hashtag.title" v-model="picked">
+                <label class="form-check-label" for="hashtag.title">{{ hashtag.title }}</label>
+              </div>
+            </div>
+            <div>
+              <input class="form-check-input" type="radio" id="other" name="picked" value="">
+              <label class="form-check-label" for="other">Other</label> <input type="text" name="new-hashtag"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit!</button>
+          </form>
+        </div>
+      </div>
+      </div>
+
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Aaron <3 Scott Wedding Hashtag',
+          hashtags: [
+            { title: 'AaronPlusScottEqualsILoveYou', count: 7 },
+            { title: 'LoveWinsAgainScottAndAaron2021', count: 5 },
+            { title: 'BlackOnBlackLove', count: 3 }
+          ],
+          picked: ''
+        },
+        methods: {
+          addHashtag: function() {
+            this.hashtags.push({ title: 'NewHashtagAdded', count: 1 })
+          },
+          addVote: function() {
+            this.hashtags[i].count += 1;
+          }
         }
-      }
-    })
-  </script>
-</body>
+      })
+    </script>
+  </body>
 </html>
+
